@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Lexend";
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      .header {
+        flex: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: rgba(255, 0, 0, 0.745);
+      }
+      .content {
+        flex: 5;
+        font-size: 26px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
+      .link {
+        flex: 4;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      .link button {
+        font-size: 20px;
+        padding: 3px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>404</h1>
+    </div>
+    <div class="content">
+      <p>Page not found</p>
+    </div>
+    <div class="link">
+      <a href="/"><button>Go Back</button></a>
+    </div>
+  </body>
+</html>

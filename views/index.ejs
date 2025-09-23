@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>File Uploader</title>
-</head>
-<body>
-  <h1>TEST</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Uploader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Lexend";
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      nav {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        padding: 8px;
+      }
+      .content {
+        flex: 8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .title {
+        flex: 2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 8px;
+        font-size: 30px;
+        color: #023e8a;
+      }
+      .links {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+      button {
+        font-size: 23px;
+        padding: 7px 14px;
+        cursor: pointer;
+        background-color: #0077b6;
+        border: 0;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="title">FileUploader</div>
+      <div class="links">
+        <a href="/login" class="login-link"><button>Log In</button></a>
+        <a href="/signup" class="signup-link"><button>Sign Up</button></a>
+      </div>
+    </nav>
+    <div class="content">Upload files</div>
+  </body>
 </html>
