@@ -18,12 +18,19 @@
     "url": "https://github.com/Vardhanb07/file-uploader/issues"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.3",
+    "@quixo3/prisma-session-store": "^3.1.13",
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
+    "multer": "^2.0.2",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
   },
-  "homepage": "https://github.com/Vardhanb07/file-uploader#readme"
+  "homepage": "https://github.com/Vardhanb07/file-uploader#readme",
+  "devDependencies": {
+    "prisma": "^6.16.2"
+  }
 }
