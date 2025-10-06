@@ -25,4 +25,63 @@ async function insertUsers(name, username, password) {
     });
 }
 
-module.exports = { insertUsers };
+async function getUser(username) {
+  async function f(username) {
+    const userInfo = prisma.user.findUnique({
+      where: {
+        username: username,
+      },
+    });
+    return userInfo;
+  }
+  return f(username)
+    .then(async (userInfo) => {
+      return userInfo;
+      prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
+async function getAllUsers() {
+  async function f(username) {
+    const userInfo = await prisma.user.findMany();
+    return userInfo;
+  }
+  return f()
+    .then(async (userInfo) => {
+      prisma.$disconnect();
+      return userInfo;
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
+async function getUserById(id) {
+  async function f(id) {
+    const userInfo = await prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return userInfo;
+  }
+  return f(id)
+    .then(async (userInfo) => {
+      prisma.$disconnect();
+      return userInfo;
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
+module.exports = { insertUsers, getUser, getAllUsers, getUserById };

@@ -16,7 +16,7 @@ function checkPasswords(req, res, next) {
 function addUser(req, res) {
   const { name, username, password } = req.body;
   db.insertUsers(name, username, password);
-  res.redirect("/");
+  res.render("signupSuccess");
 }
 
 module.exports = {

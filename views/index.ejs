@@ -66,6 +66,9 @@
         <a href="/login" class="login-link"><button>Log In</button></a>
         <a href="/signup" class="signup-link"><button>Sign Up</button></a>
       </div>
+      <% if(locals.user) { %>
+        <p>Test</p>
+     <% } %>
     </nav>
     <div class="content">Upload files</div>
   </body>
