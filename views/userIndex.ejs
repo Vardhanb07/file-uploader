@@ -60,19 +60,24 @@
         border: 0;
         color: white;
       }
+      .settings {
+        padding: 4px 8px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      }
     </style>
   </head>
   <body>
     <nav>
       <div class="title">FileUploader</div>
       <div class="links">
-        <a href="/login" class="login-link"><button>Log In</button></a>
-        <a href="/signup" class="signup-link"><button>Sign Up</button></a>
+        <a href="/logout" title="Click me to logout!"><button>Logout</button></a>
+        <a href="/user/settings" class="settings" title="Click me for user settings!">
+          <img src="<%= imgSrc %>" alt="manage_account" width="50" height="50">
+        </a>
       </div>
     </nav>
     <div class="content">
-      <p>Login to upload files</p>
-      <a href="/login" class="login-link"><button>Log In</button></a>
+      
     </div>
   </body>
 </html>

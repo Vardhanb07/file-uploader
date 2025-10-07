@@ -1,12 +1,14 @@
 const express = require("express");
 require("dotenv").config();
-const loginRouter = require("./routes/loginRouter");
-const signupRouter = require("./routes/signupRouter");
 const path = require("node:path");
 const session = require("express-session");
 const passport = require("passport");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const { PrismaClient } = require("./generated/prisma");
+const loginRouter = require("./routes/loginRouter");
+const signupRouter = require("./routes/signupRouter");
+const userRouter = require("./routes/userRouter");
+const logoutRouter = require("./routes/logoutRouter");
 
 const app = express();
 
@@ -33,12 +35,20 @@ app.use(
 app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/static", express.static(path.join(__dirname, "public")));
 app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
+app.use("/logout", logoutRouter);
 
 app.get("/", (req, res) => {
-  res.render("index", { user: req.user });
+  if (req.user) {
+    res.redirect("/user");
+  } else {
+    res.render("index");
+  }
 });
+
+app.use("/user", userRouter);
 
 app.use((req, res, next) => {
   res.status(404).render("404");
