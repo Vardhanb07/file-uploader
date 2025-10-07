@@ -4,7 +4,7 @@ function protect(req, res, next) {
   if (req.user) {
     next();
   } else {
-    res.redirect("/404");
+    res.render("404")
   }
 }
 
