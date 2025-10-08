@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "JetBrains Mono";
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      nav {
+        padding: 5px;
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px groove #000000;
+      }
+      .username {
+        padding-left: 10px;
+        flex: 3;
+        font-size: 22px;
+      }
+      .return-link {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .return-link button {
+        font-size: 22px;
+        padding: 5px 8px;
+        background-color: #0077b6;
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+      }
+      .content {
+        margin-bottom: 4px;
+        flex: 10;
+        display: flex;
+        flex-direction: row;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+      }
+      .sidebar > div {
+        padding-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+      }
+      .sidebar div {
+        cursor: pointer;
+      }
+      .sidebar hr {
+        width: 100%;
+        height: 1px;
+        background-color: #000000;
+      }
+      .user-settings-content {
+        flex: 6;
+        padding: 8px;
+      }
+      hr {
+        width: 1px;
+        height: 100%;
+        background-color: #000000;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="username">
+        <p><%= username %></p>
+      </div>
+      <div class="return-link">
+        <a href="/user"><button>Go Back</button></a>
+      </div>
+    </nav>
+    <div class="content">
+      <div class="sidebar">
+        <div>
+          <p>Settings</p>
+          <hr>
+          <p>Files</p>
+          <hr>
+          <p>About file uploader</p>
+          <hr>
+        </div>
+      </div>
+      <div><hr></div>
+      <div class="user-settings-content">
+        <p>Update me!</p>
+      </div>
+    </div>
+  </body>
+</html>

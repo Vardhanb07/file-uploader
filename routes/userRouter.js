@@ -7,4 +7,6 @@ userRouter.use(userController.protect);
 
 userRouter.get("/", userController.showPage);
 
+userRouter.get("/settings", userController.settings);
+
 module.exports = userRouter;

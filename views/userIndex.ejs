@@ -7,14 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&display=swap"
       rel="stylesheet"
     />
     <style>
       * {
         margin: 0;
         padding: 0;
-        font-family: "Lexend";
+        font-family: "JetBrains Mono";
       }
       body {
         display: flex;
@@ -70,14 +70,25 @@
     <nav>
       <div class="title">FileUploader</div>
       <div class="links">
-        <a href="/logout" title="Click me to logout!"><button>Logout</button></a>
-        <a href="/user/settings" class="settings" title="Click me for user settings!">
-          <img src="<%= imgSrc %>" alt="manage_account" width="50" height="50">
+        <a href="/logout" title="Click me to logout!"
+          ><button>Logout</button></a
+        >
+        <a
+          href="/user/settings"
+          class="settings"
+          title="Click me for user settings!"
+        >
+          <img
+            src="<%= imgSrc %>"
+            alt="manage_account"
+            width="50"
+            height="50"
+          />
         </a>
       </div>
     </nav>
     <div class="content">
-      
+      <%- include("partials/userFiles", { files: null }); %>
     </div>
   </body>
 </html>
