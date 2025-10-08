@@ -68,8 +68,10 @@
         width: 100%;
         align-items: center;
       }
-      .sidebar div {
+      .sidebar > div > div {
         cursor: pointer;
+        width: 100%;
+        text-align: center;
       }
       .sidebar hr {
         width: 100%;
@@ -86,7 +88,56 @@
         background-color: #000000;
         border: none;
       }
+      .settings-panel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .files-panel,
+      .about-panel {
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+      .about-panel {
+        flex-direction: column;
+        height: 100%;
+      }
+      .about-panel > p {
+        flex: 1;
+      }
+      .about-panel > div {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .about-panel > div > p {
+        text-align: center;
+      }
     </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const settings = document.querySelector(".settings-text");
+        settings.addEventListener("click", () => {
+          document.querySelector(".settings-panel").style.display = "flex";
+          document.querySelector(".files-panel").style.display = "none";
+          document.querySelector(".about-panel").style.display = "none";
+        });
+        const files = document.querySelector(".files-text");
+        files.addEventListener("click", () => {
+          document.querySelector(".settings-panel").style.display = "none";
+          document.querySelector(".files-panel").style.display = "flex";
+          document.querySelector(".about-panel").style.display = "none";
+        });
+        const about = document.querySelector(".about-text");
+        about.addEventListener("click", () => {
+          document.querySelector(".settings-panel").style.display = "none";
+          document.querySelector(".files-panel").style.display = "none";
+          document.querySelector(".about-panel").style.display = "flex";
+        });
+      });
+    </script>
   </head>
   <body>
     <nav>
@@ -100,17 +151,35 @@
     <div class="content">
       <div class="sidebar">
         <div>
-          <p>Settings</p>
-          <hr>
-          <p>Files</p>
-          <hr>
-          <p>About file uploader</p>
-          <hr>
+          <div class="settings-text">
+            <p>Settings</p>
+          </div>
+          <hr />
+          <div class="files-text">
+            <p>Files</p>
+          </div>
+          <hr />
+          <div class="about-text">
+            <p>About file uploader</p>
+          </div>
+          <hr />
         </div>
       </div>
-      <div><hr></div>
+      <div><hr /></div>
       <div class="user-settings-content">
-        <p>Update me!</p>
+        <div class="settings-panel">
+          <p>Settings</p>
+        </div>
+        <div class="files-panel">
+          <p>Files</p>
+        </div>
+        <div class="about-panel">
+          <p>About file uploader</p>
+          <div>
+            <p>File uploader is a strip down version of <a href="https://workspace.google.com/intl/en_in/products/drive/">Google drive</a></p>
+            <p>Developed by <a href="https://github.com/vardhanb07/">Vardhanb07</a></p>
+          </div>
+        </div>
       </div>
     </div>
   </body>
