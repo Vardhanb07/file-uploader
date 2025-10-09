@@ -1,4 +1,5 @@
 const path = require("node:path");
+const bcrypt = require("bcrypt")
 
 function protect(req, res, next) {
   if (req.user) {
@@ -12,8 +13,8 @@ function showPage(req, res) {
   res.render("userIndex", { imgSrc: "/static/images/manage_account.svg" });
 }
 
-function settings(req, res) {
-  res.render("userSettings", { username: req.user.username });
+async function settings(req, res) {
+  res.render("userSettings", { username: req.user.username, name: req.user.name });
 }
 
 module.exports = { showPage, protect, settings };

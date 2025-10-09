@@ -84,4 +84,79 @@ async function getUserById(id) {
     });
 }
 
-module.exports = { insertUsers, getUser, getAllUsers, getUserById };
+async function updateName(id, name) {
+  async function f(id, name) {
+    await prisma.user.update({
+      where: {
+        id: id,
+      },
+      data: {
+        name: name,
+      },
+    });
+  }
+  f(id, name)
+    .then(async () => {
+      prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
+async function updateUsername(id, username) {
+  async function f(id, username) {
+    await prisma.user.update({
+      where: {
+        id: id,
+      },
+      data: {
+        username: username,
+      },
+    });
+  }
+  f(id, username)
+    .then(async () => {
+      prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
+async function updatePassword(id, password) {
+  password = await bcrypt.hash(password, 11);
+  async function f(id, password) {
+    await prisma.user.update({
+      where: {
+        id: id,
+      },
+      data: {
+        password: password,
+      },
+    });
+  }
+  f(id, password)
+    .then(async () => {
+      prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
+module.exports = {
+  insertUsers,
+  getUser,
+  getAllUsers,
+  getUserById,
+  updateName,
+  updateUsername,
+  updatePassword,
+};

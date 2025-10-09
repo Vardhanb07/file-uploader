@@ -88,10 +88,12 @@
         background-color: #000000;
         border: none;
       }
-      .settings-panel {
+      .account-panel {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 100%;
       }
       .files-panel,
       .about-panel {
@@ -115,24 +117,47 @@
       .about-panel > div > p {
         text-align: center;
       }
+      .account-panel > p {
+        flex: 1;
+      }
+      .account-details-panel {
+        flex: 5;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 20px;
+      }
+      .account-details-panel > div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .account-details-panel > div button {
+        font-size: 20px;
+        padding: 4px 8px;
+        border: 0;
+        background-color: #0077b6;
+        color: #fff;
+        cursor: pointer;
+      }
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const settings = document.querySelector(".settings-text");
+        const settings = document.querySelector(".account-text");
         settings.addEventListener("click", () => {
-          document.querySelector(".settings-panel").style.display = "flex";
+          document.querySelector(".account-panel").style.display = "flex";
           document.querySelector(".files-panel").style.display = "none";
           document.querySelector(".about-panel").style.display = "none";
         });
         const files = document.querySelector(".files-text");
         files.addEventListener("click", () => {
-          document.querySelector(".settings-panel").style.display = "none";
+          document.querySelector(".account-panel").style.display = "none";
           document.querySelector(".files-panel").style.display = "flex";
           document.querySelector(".about-panel").style.display = "none";
         });
         const about = document.querySelector(".about-text");
         about.addEventListener("click", () => {
-          document.querySelector(".settings-panel").style.display = "none";
+          document.querySelector(".account-panel").style.display = "none";
           document.querySelector(".files-panel").style.display = "none";
           document.querySelector(".about-panel").style.display = "flex";
         });
@@ -151,8 +176,8 @@
     <div class="content">
       <div class="sidebar">
         <div>
-          <div class="settings-text">
-            <p>Settings</p>
+          <div class="account-text">
+            <p>Account</p>
           </div>
           <hr />
           <div class="files-text">
@@ -167,8 +192,28 @@
       </div>
       <div><hr /></div>
       <div class="user-settings-content">
-        <div class="settings-panel">
-          <p>Settings</p>
+        <div class="account-panel">
+          <p>Account Details</p>
+          <div class="account-details-panel">
+            <div class="change-name">
+              <p>Name: <%= name %></p>
+              <div>
+                <a href="/change/name"><button>Change name</button></a>
+              </div>
+            </div>
+            <div class="change-username">
+              <p>Username: <%= username %></p>
+              <div>
+                <a href="/change/username"><button>Change username</button></a>
+              </div>
+            </div>
+            <div class="change-password">
+              <p>Password: ********</p>
+              <div>
+                <a href="/change/password"><button>Change password</button></a>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="files-panel">
           <p>Files</p>
@@ -176,8 +221,16 @@
         <div class="about-panel">
           <p>About file uploader</p>
           <div>
-            <p>File uploader is a strip down version of <a href="https://workspace.google.com/intl/en_in/products/drive/">Google drive</a></p>
-            <p>Developed by <a href="https://github.com/vardhanb07/">Vardhanb07</a></p>
+            <p>
+              File uploader is a strip down version of
+              <a href="https://workspace.google.com/intl/en_in/products/drive/"
+                >Google drive</a
+              >
+            </p>
+            <p>
+              Developed by
+              <a href="https://github.com/vardhanb07/">Vardhanb07</a>
+            </p>
           </div>
         </div>
       </div>
