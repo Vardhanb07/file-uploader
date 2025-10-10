@@ -1,7 +1,7 @@
 {
   "name": "file-uploader",
   "version": "1.0.0",
-  "description": "",
+  "description": "A strip down version of google drive, can be used to upload files",
   "main": "index.js",
   "scripts": {
     "dev": "node --watch ."

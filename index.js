@@ -10,6 +10,7 @@ const signupRouter = require("./routes/signupRouter");
 const userRouter = require("./routes/userRouter");
 const logoutRouter = require("./routes/logoutRouter");
 const changeRouter = require("./routes/changeRouter");
+const fileRouter = require("./routes/fileRouter")
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
 app.use("/logout", logoutRouter);
 app.use("/change", changeRouter);
+app.use("/file", fileRouter)
 
 app.get("/", (req, res) => {
   if (req.user) {

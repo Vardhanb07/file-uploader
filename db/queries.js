@@ -151,6 +151,66 @@ async function updatePassword(id, password) {
     });
 }
 
+async function insertFilePath(userId, filePath) {
+  async function f(userId, filePath) {
+    await prisma.userFile.create({
+      data: {
+        path: filePath,
+        userId: userId,
+      },
+    });
+  }
+  f(userId, filePath)
+    .then(async () => {
+      prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
+async function deleteFile(fileId) {
+  async function f(fileId) {
+    await prisma.userFile.delete({
+      where: {
+        id: fileId,
+      },
+    });
+  }
+  f(fileId)
+    .then(async () => {
+      prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
+async function getUserFilePaths(userId) {
+  async function f(userId) {
+    const result = await prisma.userFile.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+    return result;
+  }
+  return f(userId)
+    .then(async (result) => {
+      prisma.$disconnect();
+      return result;
+    })
+    .catch(async (e) => {
+      console.error(e);
+      prisma.$disconnect();
+      process.exit(1);
+    });
+}
+
 module.exports = {
   insertUsers,
   getUser,
@@ -159,4 +219,7 @@ module.exports = {
   updateName,
   updateUsername,
   updatePassword,
+  insertFilePath,
+  deleteFile,
+  getUserFilePaths,
 };
