@@ -89,6 +89,10 @@
     <div class="form">
       <form action="/file/upload" method="post" enctype="multipart/form-data">
         <div>
+          <label for="fileName"> Name </label>
+          <input type="text" name="fileName" id="fileName" required />
+        </div>
+        <div>
           <label for="file">File</label>
           <input type="file" name="file" id="file" required />
         </div>

@@ -1,6 +1,6 @@
-const path = require("node:path");
-const bcrypt = require("bcrypt");
-const db = require("../db/queries");
+const { PrismaClient } = require("../generated/prisma");
+
+const prisma = new PrismaClient();
 
 function protect(req, res, next) {
   if (req.user) {
@@ -11,10 +11,25 @@ function protect(req, res, next) {
 }
 
 async function showPage(req, res) {
-  const filePaths = await db.getUserFilePaths(req.user.id);
+  async function f(userId) {
+    const result = await prisma.userFile.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+    return result;
+  }
+  const result = await f(req.user.id);
+  try {
+    await prisma.$disconnect();
+  } catch (e) {
+    console.error(e);
+    prisma.$disconnect();
+    process.exit(1);
+  }
   res.render("userIndex", {
     imgSrc: "/static/images/manage_account.svg",
-    filePaths: filePaths,
+    filePaths: result,
   });
 }
 

@@ -1,8 +1,15 @@
 <html>
   <body>
-    <% if(!files) { %>
+    <% if(files.length == 0 || !files) { %>
     <p>It appears you have no files here, would you like upload some</p>
     <a href="/file/upload"><button>Upload</button></a>
+    <% } else { %>
+    <p>Your Files</p>
+    <% for(const file of filePaths) { %>
+      <div>
+        <p>file name:  <%= file.name %></p>
+      </div> 
+    <% } %> 
     <% } %>
   </body>
 </html>

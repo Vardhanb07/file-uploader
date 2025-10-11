@@ -10,10 +10,6 @@ fileRouter.use(userController.protect);
 
 fileRouter.get("/upload", fileController.showFileForm);
 
-fileRouter.post(
-  "/upload",
-  upload.single("file"),
-  fileController.uploadUserFile
-);
+fileRouter.post("/upload", upload.single("file"), fileController.postFilePath);
 
 module.exports = fileRouter;
