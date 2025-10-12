@@ -1,6 +1,4 @@
-const { PrismaClient } = require("../generated/prisma");
-
-const prisma = new PrismaClient();
+const prisma = require("../db/client");
 
 function protect(req, res, next) {
   if (req.user) {
@@ -11,25 +9,16 @@ function protect(req, res, next) {
 }
 
 async function showPage(req, res) {
-  async function f(userId) {
-    const result = await prisma.userFile.findMany({
-      where: {
-        userId: userId,
-      },
-    });
-    return result;
-  }
-  const result = await f(req.user.id);
-  try {
-    await prisma.$disconnect();
-  } catch (e) {
-    console.error(e);
-    prisma.$disconnect();
-    process.exit(1);
-  }
+  const { id } = req.user;
+  const result = await prisma.userFile.findMany({
+    where: {
+      userId: id,
+    },
+  });
   res.render("userIndex", {
-    imgSrc: "/static/images/manage_account.svg",
+    accountSrc: "/static/images/manage_account.svg",
     filePaths: result,
+    downloadSrc: "/static/images/download.svg",
   });
 }
 

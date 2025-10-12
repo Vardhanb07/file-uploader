@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const db = require("../db/queries");
+const prisma = require("../db/client")
 
 async function changeName(req, res) {
   res.render("changeUserDetails", {
@@ -39,17 +39,39 @@ async function checkPassword(req, res, next) {
 }
 
 async function postUpdatedName(req, res) {
-  await db.updateName(req.user.id, req.body.newname);
+  await prisma.user.update({
+    where: {
+      id: req.user.id
+    },
+    data: {
+      name: req.body.newname
+    }
+  })
   res.redirect("/user/settings");
 }
 
 async function postUpdatedUsername(req, res) {
-  await db.updateUsername(req.user.id, req.body.newusername);
+  await prisma.user.update({
+    where: {
+      id: req.user.id,
+    },
+    body: {
+      username: req.body.newusername,
+    },
+  });
   res.redirect("/user/settings");
 }
 
 async function postUpdatedPassword(req, res) {
-  await db.updatePassword(req.user.id.req.body.newpassword);
+  password = await bcrypt.hash(req.body.newpassword, 11);
+  await prisma.user.update({
+    where: {
+      id: req.user.id,
+    },
+    data: {
+      password: password,
+    },
+  });
   res.redirect("/user/settings");
 }
 

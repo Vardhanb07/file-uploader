@@ -1,11 +1,20 @@
-const db = require("../db/queries");
+const prisma = require("../db/client");
 
 async function showFileForm(req, res) {
   res.render("userFileForm");
 }
 
 async function postFilePath(req, res) {
-  await db.insertFilePath(req.user.id, req.file.path, req.body.fileName);
+  const { fileName } = req.body;
+  const { path } = req.file;
+  const { id } = req.user;
+  await prisma.userFile.create({
+    data: {
+      name: fileName,
+      path: path,
+      userId: id,
+    },
+  });
   res.redirect("/");
 }
 
