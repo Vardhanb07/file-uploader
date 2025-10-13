@@ -95,7 +95,6 @@
         align-items: center;
         height: 100%;
       }
-      .files-panel,
       .about-panel {
         display: none;
         justify-content: center;
@@ -149,19 +148,11 @@
         const settings = document.querySelector(".account-text");
         settings.addEventListener("click", () => {
           document.querySelector(".account-panel").style.display = "flex";
-          document.querySelector(".files-panel").style.display = "none";
-          document.querySelector(".about-panel").style.display = "none";
-        });
-        const files = document.querySelector(".files-text");
-        files.addEventListener("click", () => {
-          document.querySelector(".account-panel").style.display = "none";
-          document.querySelector(".files-panel").style.display = "flex";
           document.querySelector(".about-panel").style.display = "none";
         });
         const about = document.querySelector(".about-text");
         about.addEventListener("click", () => {
           document.querySelector(".account-panel").style.display = "none";
-          document.querySelector(".files-panel").style.display = "none";
           document.querySelector(".about-panel").style.display = "flex";
         });
       });
@@ -181,10 +172,6 @@
         <div>
           <div class="account-text">
             <p>Account</p>
-          </div>
-          <hr />
-          <div class="files-text">
-            <p>Files</p>
           </div>
           <hr />
           <div class="about-text">
@@ -222,9 +209,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="files-panel">
-          <p>Files</p>
         </div>
         <div class="about-panel">
           <p>About file uploader</p>
