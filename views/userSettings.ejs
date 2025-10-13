@@ -140,6 +140,9 @@
         color: #fff;
         cursor: pointer;
       }
+      #delete-button {
+        background-color: rgba(255, 0, 0, 0.725);
+      }
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -211,6 +214,11 @@
               <p>Password: ********</p>
               <div>
                 <a href="/change/password"><button>Change password</button></a>
+              </div>
+            </div>
+            <div>
+              <div>
+                <a href="/user/delete"><button id="delete-button">Delete account</button></a>
               </div>
             </div>
           </div>

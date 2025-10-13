@@ -12,4 +12,6 @@ fileRouter.get("/upload", fileController.showFileForm);
 
 fileRouter.post("/upload", upload.single("file"), fileController.postFilePath);
 
+fileRouter.get("/delete/:id", fileController.deleteFile)
+
 module.exports = fileRouter;

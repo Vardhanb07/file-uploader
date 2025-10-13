@@ -9,4 +9,12 @@ userRouter.get("/", userController.showPage);
 
 userRouter.get("/settings", userController.settings);
 
+userRouter.get("/delete", userController.showPasswordVerification);
+
+userRouter.post(
+  "/delete/:id",
+  userController.checkPassword,
+  userController.deleteAccount
+);
+
 module.exports = userRouter;

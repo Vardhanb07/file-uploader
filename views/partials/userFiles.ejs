@@ -1,8 +1,10 @@
 <html>
   <body>
     <% if(!files || files.length == 0) { %>
-    <p>It appears you have no files here, would you like upload some</p>
-    <a href="/file/upload"><button>Upload</button></a>
+    <div class="no-file-message">
+      <p>It appears you have no files here, would you like upload some</p>
+      <a href="/file/upload"><button>Upload</button></a>
+    </div>
     <% } else { %>
     <p>Your Files</p>
     <div class="files">
@@ -12,6 +14,11 @@
         <div>
           <a href="/download/<%= file.id %>">
             <img src="<%= downloadSrc %>" alt="download-file" />
+          </a>
+        </div>
+        <div>
+          <a href="/file/delete/<%= file.id %>">
+            <img src="<%= deleteSrc %>" alt="delete-file" />
           </a>
         </div>
       </div>

@@ -63,6 +63,14 @@
         padding: 4px 8px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       }
+      .no-file-message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        height: 100%;
+      }
       .files {
         display: flex;
         flex-direction: column;
@@ -92,6 +100,11 @@
     <nav>
       <div class="title">FileUploader</div>
       <div class="links">
+        <% if(filePaths.length > 0) { %>
+        <a href="/file/upload" title="Click me to upload files!"
+          ><button>Upload</button></a
+        >
+        <% } %>
         <a href="/logout" title="Click me to logout!"
           ><button>Logout</button></a
         >
@@ -110,7 +123,8 @@
       </div>
     </nav>
     <div class="content">
-      <%- include("partials/userFiles", { files: filePaths, downloadSrc: downloadSrc }); %>
+      <%- include("partials/userFiles", { files: filePaths, downloadSrc:
+      downloadSrc, deleteSrc: deleteSrc }); %>
     </div>
   </body>
 </html>
